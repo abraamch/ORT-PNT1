@@ -1,0 +1,119 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>189</w><h>171</h></coordinates><panel_attributes>SystemClinica
+--
+-nombre: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>0</y><w>189</w><h>108</h></coordinates><panel_attributes>Usuario
+--
+-nombre: String
+-email: String
+-fechaAlta: String
+-password: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>468</x><y>351</y><w>189</w><h>180</h></coordinates><panel_attributes>Paciente
+--
+-obraSocial: String
+--
++autoRegistrarse(): boolean
+
+*+registrar(): Paciente*
+
++consultarHistoriaClinica(): void
++consultarEpisodios(): void
+//Actualizar Datos:
++setTelefono(): void
++setDireccion(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>72</x><y>351</y><w>189</w><h>180</h></coordinates><panel_attributes>Medico
+--
+-matricula: String
+&gt;&gt;&gt;enum de especialidades (? o sino q ingrese el medico su especialidad.
+-especialidad: String
+--
+
+*+registrar(): Medico*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>351</y><w>189</w><h>171</h></coordinates><panel_attributes>Empleado
+--
+-legajo: String
+--
+
+*+registrar(): Empleado*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1134</x><y>378</y><w>189</w><h>72</h></coordinates><panel_attributes>HistoriaClinica
+--
+
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>819</x><y>585</y><w>189</w><h>171</h></coordinates><panel_attributes>Episodio
+--
+-motivo: String, &gt;&gt;&gt;podria tener enum
+-descripcion: String
+-fechaYHoraInicio: &gt;&gt;&gt;String
+-fechaYHoraAlta: &gt;&gt;&gt;String
+-fechaYHoraCierre: &gt;&gt;&gt;String
+-estadoAbierto: boolean
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>9</x><y>720</y><w>189</w><h>171</h></coordinates><panel_attributes>Evolucion
+--
+-fechaYHoraInicio: &gt;&gt;&gt;String
+-fechaYHoraAlta: &gt;&gt;&gt;String
+-fechaYHoraCierre: &gt;&gt;&gt;String
+-descripcionAtencion: String
+-estadoAbierto: boolean
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>837</y><w>135</w><h>81</h></coordinates><panel_attributes>Nota
+--
+-mensaje: String
+-fechaYHora: &gt;&gt;&gt;String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>720</y><w>189</w><h>171</h></coordinates><panel_attributes>Epicrisis
+--
+-fechaYHora : &gt;&gt;&gt;String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>495</x><y>954</y><w>189</w><h>81</h></coordinates><panel_attributes>Diagnostico
+--
+-descripcion: String
+-recomendacion: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>270</x><y>135</y><w>189</w><h>171</h></coordinates><panel_attributes>/Persona/
+--
+-nombre: String
+-apellido: String
+-dni: int
+-telefono: int
+-direccion: String
+-fechaAlta: String
+-email: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>297</y><w>207</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>210;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>297</y><w>27</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>297</y><w>207</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;210;60</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>0</y><w>108</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-usuarios
+m1=0..n</panel_attributes><additional_attributes>100;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>531</x><y>0</y><w>117</w><h>72</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+/Registrable/
+--
+
+--
++registrar(): &lt;T&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>99</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>0</y><w>99</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>90;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>369</y><w>504</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-historiaClinica
+m1=1</panel_attributes><additional_attributes>540;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>414</y><w>243</w><h>189</h></coordinates><panel_attributes>lt=&lt;-
+-episodios
+m1=0..*</panel_attributes><additional_attributes>250;190;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>963</x><y>405</y><w>189</w><h>198</h></coordinates><panel_attributes>lt=&lt;-
+-episodios
+m1=0..*</panel_attributes><additional_attributes>10;200;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>90</x><y>522</y><w>63</w><h>216</h></coordinates><panel_attributes>lt=&lt;-
+-medico
+m1=1</panel_attributes><additional_attributes>10;10;10;220</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>828</y><w>99</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-notas
+m1=0..*</panel_attributes><additional_attributes>90;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>675</x><y>729</y><w>162</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-episodio
+m1=1</panel_attributes><additional_attributes>160;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>162</x><y>522</y><w>351</w><h>243</h></coordinates><panel_attributes>lt=&lt;-
+-medico
+m1=1</panel_attributes><additional_attributes>10;10;10;120;370;250</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>882</y><w>90</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+-diagnostico
+m1=1</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>189</x><y>864</y><w>99</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-evolucion
+m1=1</panel_attributes><additional_attributes>10;20;90;20</additional_attributes></element><element><id>Relation</id><coordinates><x>333</x><y>513</y><w>81</w><h>342</h></coordinates><panel_attributes>lt=&lt;-
+-empleado
+m1=1</panel_attributes><additional_attributes>10;10;10;360</additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>882</y><w>72</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+-epicrisis
+m1=0..*</panel_attributes><additional_attributes>10;10;10;80</additional_attributes></element><element><id>Relation</id><coordinates><x>648</x><y>387</y><w>504</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-paciente
+m1=1</panel_attributes><additional_attributes>10;20;540;20</additional_attributes></element><element><id>Relation</id><coordinates><x>378</x><y>513</y><w>459</w><h>99</h></coordinates><panel_attributes>lt=&lt;-
+-empleadoRegistra
+m1=1</panel_attributes><additional_attributes>10;10;10;80;490;90</additional_attributes></element><element><id>Relation</id><coordinates><x>675</x><y>702</y><w>162</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-epicrisis
+m1=0..*</panel_attributes><additional_attributes>10;20;160;20</additional_attributes></element><element><id>Relation</id><coordinates><x>81</x><y>747</y><w>855</w><h>441</h></coordinates><panel_attributes>lt=&lt;-
+-evoluciones
+m1=0..*</panel_attributes><additional_attributes>10;160;10;470;930;470;930;10</additional_attributes></element></diagram>

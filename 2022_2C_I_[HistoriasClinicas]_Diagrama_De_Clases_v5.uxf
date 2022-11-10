@@ -1,0 +1,96 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>20</x><y>30</y><w>210</w><h>190</h></coordinates><panel_attributes>SystemClinica
+--
+-nombre: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>20</y><w>210</w><h>120</h></coordinates><panel_attributes>Usuario
+--
+-nombre: String
+-email: String
+-fechaAlta: String
+-password: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>160</y><w>210</w><h>200</h></coordinates><panel_attributes>Paciente
+--
+-nombre: String
+-apellido: String
+-dni: int
+-telefono: int
+-direccion: String
+-fechaAlta: String
+-email: String
+-obraSocial: String
+
+&gt;&gt;&gt; -historiaClinica: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>380</y><w>210</w><h>200</h></coordinates><panel_attributes>Medico
+--
+-nombre: String
+-apellido: String
+-dni: int
+-telefono: int
+-direccion: String
+-fechaAlta: String
+-email: String
+-matricula: String
+&gt;&gt;&gt;enum de especialidades (? o sino q ingrese el medico su especialidad.
+-especialidad: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>850</x><y>590</y><w>210</w><h>190</h></coordinates><panel_attributes>Empleado
+--
+-nombre: String
+-apellido: String
+-dni: int
+-telefono: int
+-direccion: String
+-fechaAlta: String
+-email: String
+-legajo: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>20</y><w>210</w><h>190</h></coordinates><panel_attributes>HistoriaClinica
+--
+-paciente: ...lista
+-episodios: ...lista
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>230</y><w>210</w><h>190</h></coordinates><panel_attributes>Episodio
+--
+-motivo: String, &gt;&gt;&gt;podria tener enum
+-descripcion: String
+-fechaYHoraInicio: &gt;&gt;&gt;String
+-fechaYHoraAlta: &gt;&gt;&gt;String
+-fechaYHoraCierre: &gt;&gt;&gt;String
+-estadoAbierto: boolean
+-evoluciones: ...lista
+-epicrisis: ...lista
+-empleadoRegistra: ...lista
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>440</y><w>210</w><h>190</h></coordinates><panel_attributes>Evolucion
+--
+-medico: ...lista
+-fechaYHoraInicio: &gt;&gt;&gt;String
+-fechaYHoraAlta: &gt;&gt;&gt;String
+-fechaYHoraCierre: &gt;&gt;&gt;String
+-descripcionAtencion: String
+-estadoAbierto: boolean
+-notas: ...lista
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>650</y><w>210</w><h>190</h></coordinates><panel_attributes>Nota
+--
+-evolucion: ...lista
+-empleado: ...lista
+-mensaje: String
+-fechaYHora: &gt;&gt;&gt;String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>20</y><w>210</w><h>190</h></coordinates><panel_attributes>Epicrisis
+--
+-episodio: ...lista
+-medico: ...lista
+-fechaYHora : &gt;&gt;&gt;String
+-diagnostico: ...lista
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>340</x><y>230</y><w>210</w><h>190</h></coordinates><panel_attributes>Diagnostico
+--
+-epicrisis: ...lista
+-descripcion: String
+-recomendacion: String
+--
++metodoPublico(): </panel_attributes><additional_attributes></additional_attributes></element></diagram>

@@ -1,0 +1,108 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>9</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>189</w><h>171</h></coordinates><panel_attributes>SystemClinica
+--
+-nombre: String
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>0</y><w>189</w><h>108</h></coordinates><panel_attributes>Usuario
+--
+-username: String
+-email: String
+-fechaAlta: DateTime
+-password: String
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>351</y><w>189</w><h>180</h></coordinates><panel_attributes>Paciente
+--
+-obraSocial: String
+--
++Paciente(String, String, DataTime, String, String, String, int, int, String, String)
++autoRegistrarse(): boolean
+
+*+registrar(): Paciente*
+
++consultarHistoriaClinica(): void
++consultarEpisodios(): void
+//Actualizar Datos:
++setTelefono(int): void
++setDireccion(String): void
++crearEpisodio(String, String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>225</x><y>351</y><w>189</w><h>180</h></coordinates><panel_attributes>Medico
+--
+-matricula: String
+//enum de especialidades (rta: Si)
+--
++Medico(String, String, DataTime, String, String, String, int, int, String, String)
+
+*+registrar(): Medico*
+
+//"Un Medico, puede crear episodios asociados a un paciente.
+//Para ello, buscará al paciente, accederá a su Historia Clinica -&gt; Crear Episodio."
++crearEpisodio(int, String, String): boolean
+-buscarPaciente(int): Paciente
+-obtenerAHistoriaClinica(Paciente): HistoriaClinica
+//"Mientras el episodio no esta cerrado el medico puede cargar notas." ---&gt; Ya implementado por los el cargar descrito en los metodos de Nota.</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>729</x><y>522</y><w>189</w><h>126</h></coordinates><panel_attributes>HistoriaClinica
+--
+
+--
++HistoriaClinica(Paciente)
+
+//Para mostrar en Paciente todos los detalles:
++toString(): void
+//Paciente-&gt; "Puede acceder a los episodios y ver la descripción de los mismos.":
++mostrameDescDeEpisodios(): void
++crearEpisodio(String, String): boolean
++cargarMensajeNota(int indice, String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>342</x><y>639</y><w>189</w><h>171</h></coordinates><panel_attributes>Episodio
+--
+-motivo: String, &gt;&gt;&gt;podria tener enum
+-descripcion: String
+-fechaYHoraAlta: DateTime
+-fechaYHoraCierre: DateTime
+-estadoAbierto: boolean
+--
++Episodio(String, String)
+
+-cerrarEpisodio(): void
++cargarMensajeNota(int indice, String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>873</y><w>126</w><h>81</h></coordinates><panel_attributes>Nota
+--
+-mensaje: String
+-fechaYHora: DateTime
+--
++Nota(String)
+
+-setFechaYHora(DateTime): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>333</x><y>135</y><w>189</w><h>171</h></coordinates><panel_attributes>/Persona/
+--
+-nombrePersona: String
+-apellido: String
+-dni: int
+-telefono: int
+-direccion: String
+//-fechaAlta: String
+//-email: String
+--
++cargarMensajeNota(int indice, String): boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>315</x><y>297</y><w>117</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>110;10;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>441</x><y>297</y><w>126</w><h>72</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;60</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>0</y><w>171</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-usuarios
+m1=0..n</panel_attributes><additional_attributes>170;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>576</x><y>0</y><w>117</w><h>72</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+/Registrable/
+--
+
+--
++registrar(): &lt;T&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>423</x><y>99</y><w>27</w><h>54</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>513</x><y>0</y><w>81</w><h>27</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>369</y><w>279</w><h>171</h></coordinates><panel_attributes>lt=&lt;-
+-historiaClinica
+m1=1</panel_attributes><additional_attributes>280;170;280;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>522</x><y>549</y><w>225</w><h>126</h></coordinates><panel_attributes>lt=&lt;-
+-episodios
+m1=0..*</panel_attributes><additional_attributes>10;110;110;110;230;10</additional_attributes></element><element><id>Relation</id><coordinates><x>135</x><y>360</y><w>108</w><h>45</h></coordinates><panel_attributes>lt=&lt;-
+-especialidad
+m1=1</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element><element><id>Relation</id><coordinates><x>630</x><y>387</y><w>171</w><h>153</h></coordinates><panel_attributes>lt=&lt;-
+-paciente
+m1=1</panel_attributes><additional_attributes>10;20;150;20;150;150</additional_attributes></element><element><id>Relation</id><coordinates><x>297</x><y>522</y><w>126</w><h>144</h></coordinates><panel_attributes>lt=&lt;-
+-medicoRegistrante
+m1=1</panel_attributes><additional_attributes>10;10;10;140;50;140</additional_attributes></element><element><id>Relation</id><coordinates><x>432</x><y>801</y><w>54</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+-notas
+m1=0..n</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>18</x><y>360</y><w>126</w><h>180</h></coordinates><panel_attributes>&lt;&lt;enum&gt;&gt;
+Especialidad
+--
+_-PEDIATRA_
+_-ONCOLOGO_
+_-ETC_
+_-_
+_-_
+_-_
+_-_
+_-_</panel_attributes><additional_attributes></additional_attributes></element></diagram>
