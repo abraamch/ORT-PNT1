@@ -9,11 +9,11 @@ using _2022_2C_I__HistoriasClinicas_.Data;
 
 namespace _2022_2C_I__HistoriasClinicas_.Controllers
 {
-    public class LoginController : Controller
+    public class CuentaController : Controller
     {
         private readonly HistoriasClinicasContext _context;
 
-        public LoginController(HistoriasClinicasContext context)
+        public CuentaController(HistoriasClinicasContext context)
         {
             _context = context;
         }
@@ -26,15 +26,23 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
         public IActionResult Index(string email, string password)
         {
             var m = _context.Medicos.Where(a => a.email == email).Where(a => a.password == password);
-            if (m.Count() == 0) 
+            Medico med;
+            try {  med = m.First(); }  catch(Exception e) { med = null; }
+            if (med == null) 
             {
                 var p = _context.Pacientes.Where(a => a.email == email).Where(a => a.password == password);
-                if (p.Count()==0)
+                Paciente pac;
+                  try { pac = p.First(); } catch (Exception e) { pac = null; }
+                if (pac == null)
                 { return View(m); }
                 else
-                { return Redirect("/Medicos"); }
+                {
+                    UsuarioLog.UsuarioLogueado =  pac;
+                    return Redirect("/Medicos"); }
             }
-            else { return Redirect("/paciente"); }
+            else {
+                UsuarioLog.UsuarioLogueado = med;
+                return Redirect("/paciente"); }
         }
 
         public IActionResult Registrar()

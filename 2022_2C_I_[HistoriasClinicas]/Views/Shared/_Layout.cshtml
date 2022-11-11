@@ -28,6 +28,28 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Medicos" asp-action="">Medicos</a>
                         </li>
+                         @{
+                            if (UsuarioLog.UsuarioLogueado == null)
+                            {
+                        <li class="nav-item">
+                           <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="">Login</a>
+                        </li>
+                            }
+                            else {
+                        <li class="nav-item">
+                           <p> Hola!!
+                                        @{
+                                        try{
+                                                    @Html.Raw(UsuarioLog.UsuarioLogueado.email + " " + UsuarioLog.UsuarioLogueado.GetType());
+                                            ;
+
+                                        }
+                                        catch (Exception e) { }
+                                        }
+                            </p>
+                        </li>
+                        }}
+                        
                     </ul>
                 </div>
             </div>
