@@ -3,24 +3,35 @@
 @{
     ViewData["Title"] = "Details";
 }
+@{
+    if (UsuarioLog.UsuarioLogueado == null) {
+    <p>Inicia sesion para ver esta pagina <a href="/cuenta">Iniciar Sesion</a></p>
+    }
+    else if (UsuarioLog.UsuarioLogueado.GetType().Name == "Paciente") {
+    <p>Tienes que ser medico para ver esta pagina<a href="/Index">Regresar a Home</a></p>
+    }
+    else
+    {
+        <h1>Details</h1>
 
-<h1>Details</h1>
+        <div>
+            <h4>HistoriaClinica</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Paciente)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Paciente.apellido)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Create" asp-controller="Episodios" asp-route-id="@Model?.HistoriaClinicaId">Agregar Episodio</a>|
+            <a asp-action="MisEpisodios" asp-controller="Episodios" asp-route-id="@Model?.HistoriaClinicaId">Ver Episodios</a>|
+            <a asp-action="Index" asp-controller="Paciente">Back to List</a>
+        </div>
 
-<div>
-    <h4>HistoriaClinica</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Paciente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Paciente.apellido)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.HistoriaClinicaId">Edit</a> |
-    <a asp-action="Create" asp-controller="Episodios" asp-route-id="@Model?.HistoriaClinicaId">Agregar Episodio</a>|
-    <a asp-action="MisEpisodios" asp-controller="Episodios" asp-route-id="@Model?.HistoriaClinicaId">Mis Episodios</a>|
-    <a asp-action="Index">Back to List</a>
-</div>
+    }
+}
+

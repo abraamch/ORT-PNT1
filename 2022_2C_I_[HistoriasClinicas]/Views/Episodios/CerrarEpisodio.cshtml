@@ -1,0 +1,30 @@
+﻿@model Episodio
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Cerrar Episodio</h1>
+
+<h4>Episodio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CerrarEpisodio">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            Cerrar Episodio ? 
+            <div class="form-group">
+                <input type="submit" value="Cerrar" class="btn btn-primary" />
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="MisEpisodios" asp-controller="Episodios" asp-route-id="@Model?.HistoriaClinicaId">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -73,14 +73,14 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
         }
 
         // GET: Episodios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult CerrarEpisodio(int? id)
         {
             if (id == null || _context.Episodios == null)
             {
                 return NotFound();
             }
 
-            var episodio = await _context.Episodios.FindAsync(id);
+            var episodio =  _context.Episodios.Find(id);
             if (episodio == null)
             {
                 return NotFound();
@@ -93,35 +93,37 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EpisodioId,HistoriaClinicaId,Motivo,Descripcion,DescripcionAtencion")] Episodio episodio)
+        public async Task<IActionResult> CerrarEpisodio(int id)
         {
-
-            if (id != episodio.EpisodioId)
+             Episodio? episodio = _context.Episodios.Find(id);
+            if (episodio != null)
             {
-                return NotFound();
-            }
+                if (episodio.EstadoAbierto == true)
+                {
+                    try
+                    {
+                        episodio.EstadoAbierto = false;
+                        episodio.FechaYHoraCierre = DateTime.Now;
+                        _context.Update(episodio);
+                        await _context.SaveChangesAsync();
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(episodio);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EpisodioExists(episodio.EpisodioId))
-                    {
-                        return NotFound();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
-                        throw;
+                        if (!EpisodioExists(episodio.EpisodioId))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
                     }
-                }
-                return RedirectToAction(nameof(Index));
+                    return Redirect("/Episodios/MisEpisodios" + episodio.HistoriaClinicaId);
+                } 
+                return Redirect("/Episodios/MisEpisodios" + episodio.HistoriaClinicaId);
             }
-            return View(episodio);
+            else { return NotFound(); }
         }
 
         // GET: Episodios/Delete/5

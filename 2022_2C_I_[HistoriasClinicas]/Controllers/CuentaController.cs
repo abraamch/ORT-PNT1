@@ -32,12 +32,18 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
             {
                 var p = _context.Pacientes.Where(a => a.email == email).Where(a => a.password == password);
                 Paciente pac;
-                  try { pac = p.First(); } catch (Exception e) { pac = null; }
+                  try { 
+                    pac = p.First(); 
+                } 
+                catch (Exception e) { pac = null; }
                 if (pac == null)
-                { return View(m); }
+                { 
+                    return View(m); 
+                }
                 else
                 {
                     UsuarioLog.UsuarioLogueado =  pac;
+                    UsuarioLog.UsuarioLogueadoId = pac.PacienteId;
                     return Redirect("/Medicos"); }
             }
             else {
@@ -79,13 +85,18 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
                 {
                     _context.Add(medico);
                     await _context.SaveChangesAsync();
-                    return Redirect("/Medicos/index");
+                    return Redirect("index");
                 }
                 return View(medico);
             } catch(Exception e) {
                 return View(medico);
             }
             
+        }
+
+        public IActionResult MiHistoriaClinica() {
+
+            return View(_context.Episodios.Where(a => a.HistoriaClinicaId == UsuarioLog.UsuarioLogueadoId).ToList());
         }
     }
 }

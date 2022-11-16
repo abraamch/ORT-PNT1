@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Episodio>
+@{
+    if (UsuarioLog.UsuarioLogueado == null) {
+    <p>Inicia sesion para ver esta pagina <a href="/cuenta">Iniciar Sesion</a></p>
+    }
+    else if (UsuarioLog.UsuarioLogueado.GetType().Name == "Medico") {
+        <p>Debes ser un paciente para ver la pagina<a href="/Index">Regresar a Home</a></p>
+    }
+    else
+    {
+        <h2>Mi historia clinica</h2>
+        <table>
+            <tbody>
+                
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Motivo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoAbierto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DescripcionAtencion)
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>
+     }
+     }

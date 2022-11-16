@@ -6,7 +6,7 @@ namespace _2022_2C_I__HistoriasClinicas_
 {
     public static class Startup
     {
-        public static WebApplication InicializarApp(string[] args)
+        public static WebApplication IniciarApp(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             ConfigureServices(builder);
