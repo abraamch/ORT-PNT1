@@ -67,8 +67,8 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
             {
                 _context.Add(episodio);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+                return Redirect("/Episodios/MisEpisodios/" + id );
+            }  
             return View(episodio);
         }
 
@@ -119,9 +119,9 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
                             throw;
                         }
                     }
-                    return Redirect("/Episodios/MisEpisodios" + episodio.HistoriaClinicaId);
+                    return Redirect("/Episodios/MisEpisodios/" + episodio.HistoriaClinicaId);
                 } 
-                return Redirect("/Episodios/MisEpisodios" + episodio.HistoriaClinicaId);
+                return Redirect("/Episodios/MisEpisodios/" + episodio.HistoriaClinicaId);
             }
             else { return NotFound(); }
         }

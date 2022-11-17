@@ -35,7 +35,7 @@
                         @Html.DisplayNameFor(model => model.EstadoAbierto)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.DescripcionAtencion)
+                        @Html.Display("notas")
                     </th>
                     <th></th>
                 </tr>
@@ -56,17 +56,37 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.FechaYHoraAlta)
                         </td>
+                        
                         <td>
-                            @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
-                        </td>
+                            @{
+                                if (item.EstadoAbierto == false)
+                                {
+                                    @Html.DisplayFor(modelItem => item.FechaYHoraCierre)
+                                }
+                                else
+                                {
+                                    <p>El episodio aun no esta cerrado</p>
+                                    }
+                            }
+                           
+                        
+
                         <td>
                             @Html.DisplayFor(modelItem => item.EstadoAbierto)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.DescripcionAtencion)
+                            <a asp-controller="Notas" asp-action="NotasEpisodio" asp-route-id="@item.EpisodioId">Notas</a>
+                            
                         </td>
                         <td>
-                            <a asp-action="CerrarEpisodio" asp-route-id="@item.EpisodioId">Cerrar Episodio</a>
+                                @{
+                                    if (item.EstadoAbierto)
+                                    {
+                                    <a asp-controller="Notas" asp-action="Create" asp-route-id="@item.EpisodioId">Agregar Nota</a> 
+                                    <a asp-action="CerrarEpisodio" asp-route-id="@item.EpisodioId">Cerrar Episodio</a>
+                                    }
+                                }
+                            
                         </td>
                     </tr>
                 }

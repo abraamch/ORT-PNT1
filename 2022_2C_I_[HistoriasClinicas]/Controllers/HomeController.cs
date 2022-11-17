@@ -1,4 +1,5 @@
-﻿using _2022_2C_I__HistoriasClinicas_.Models;
+﻿using _2022_2C_I__HistoriasClinicas_.Data;
+using _2022_2C_I__HistoriasClinicas_.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -8,14 +9,18 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly HistoriasClinicasContext _context;
+
+       
+        public HomeController(ILogger<HomeController> logger, HistoriasClinicasContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Medicos.ToList());
         }
 
         public IActionResult Privacy()
