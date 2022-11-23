@@ -5,90 +5,86 @@
 }
 @{
     if (UsuarioLog.UsuarioLogueado == null) {
-        <p>Inicia sesion para ver esta pagina <a href="/cuenta">Iniciar Sesion</a></p>
+    <p>Inicia sesion para ver esta pagina <a href="/cuenta">Iniciar Sesion</a></p>
     }
     else if (UsuarioLog.UsuarioLogueado.GetType().Name == "Paciente") {
-        <p>No puedes ver esta pagina <a href="/Index">Regresar a Home</a></p>
+    <p>No puedes ver esta pagina <a href="/home">Regresar a Home</a></p>
     }
     else
     {
-        <h1>Pacientes</h1>
+    <h1>Pacientes</h1>
 
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ObraSocial)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.nombreDeUsuario)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.email)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.FechaAlta)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.password)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.apellido)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.dni)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.telefono)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.direccion)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
+    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ObraSocial)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.nombreDeUsuario)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.email)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FechaAlta)
+                                </th>
+                               
+                                <th>
+                                    @Html.DisplayNameFor(model => model.apellido)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.dni)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.telefono)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.direccion)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ObraSocial)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.nombreDeUsuario)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FechaAlta)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.password)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.apellido)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.dni)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.telefono)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.direccion)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.PacienteId">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.PacienteId">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.PacienteId">Delete</a>
-                            <a asp-action="Details" asp-controller="HistoriaClinicas" asp-route-id="@item.PacienteId">Acceder a Historia Clinica</a>
-                        </td>
-                    </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ObraSocial)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.nombreDeUsuario)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FechaAlta)
+                                    </td>
+                                    
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.apellido)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.dni)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.telefono)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.direccion)
+                                    </td>
+                                    <td>
+                                    
+                                    <a asp-action="Details" asp-controller="HistoriaClinicas" asp-route-id="@item.HCId">Acceder a Historia Clinica</a>
+                                
+                            
+                                    </td>
+                                </tr>
                 }
-            </tbody>
-        </table>
+                        </tbody>
+    </table>
 
     
     }

@@ -60,7 +60,7 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
         {
             string valor = form["Rol"].ToString();
             if ( valor == "Paciente") {
-               return Redirect("/Paciente/create");
+               return Redirect("RegistrarPaciente");
             } else
             {
                 return Redirect("RegistrarMedico");
@@ -93,6 +93,43 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
             }
             
         }
+
+        public IActionResult RegistrarPaciente()
+        {
+            return View();
+        }
+
+        // POST: Medicos/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegistrarPaciente([Bind("ObraSocial,nombreDeUsuario,email,password,apellido,dni,telefono,direccion")] Paciente paciente)
+        {
+            
+            paciente.FechaAlta = DateTime.Now;
+            HistoriaClinica historiaClinica = new HistoriaClinica();
+            paciente.HistoriaClinica = historiaClinica;
+            
+            historiaClinica.Paciente = paciente;
+            try {
+                if (ModelState.IsValid)
+                {
+                    
+                    _context.Add(paciente);
+                    
+                    await _context.SaveChangesAsync();
+                    
+                    paciente.HCId = historiaClinica.HistoriaClinicaId;
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else { return View(paciente); }
+            } catch(Exception e) { return View(paciente); }
+            
+            
+        }
+
 
         public IActionResult MiHistoriaClinica() {
 

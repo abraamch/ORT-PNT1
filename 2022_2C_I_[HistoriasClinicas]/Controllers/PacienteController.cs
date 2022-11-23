@@ -60,16 +60,24 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
             paciente.FechaAlta = DateTime.Now;
             HistoriaClinica historiaClinica = new HistoriaClinica();
             paciente.HistoriaClinica = historiaClinica;
-            historiaClinica.Paciente = paciente;
             
-            if (ModelState.IsValid)
-            {
-                _context.Add(paciente);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-                
-            }
-            return View(paciente);
+            historiaClinica.Paciente = paciente;
+            try {
+                if (ModelState.IsValid)
+                {
+                    
+                    _context.Add(paciente);
+                    
+                    await _context.SaveChangesAsync();
+                    
+                    paciente.HCId = historiaClinica.HistoriaClinicaId;
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else { return View(paciente); }
+            } catch(Exception e) { return View(paciente); }
+            
+            
         }
 
         // GET: Paciente/Edit/5

@@ -20,9 +20,8 @@ public class Paciente : Usuario
 
      
     public HistoriaClinica? HistoriaClinica { get; set; }
-    
-    
-        //= new List<Episodio>(); Para crear la lista.
+    public int HCId { get; set; }
+    //= new List<Episodio>(); Para crear la lista.
 
-  
+
 }

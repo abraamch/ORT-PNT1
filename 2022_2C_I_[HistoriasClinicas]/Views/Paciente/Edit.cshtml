@@ -15,12 +15,12 @@
             <input type="hidden" asp-for="PacienteId" />
             <div class="form-group">
                 <label asp-for="ObraSocial" class="control-label"></label>
-                <input asp-for="ObraSocial" class="form-control" />
+                <input  asp-for="ObraSocial" class="form-control" />
                 <span asp-validation-for="ObraSocial" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="nombreDeUsuario" class="control-label"></label>
-                <input asp-for="nombreDeUsuario" class="form-control" />
+                <input readonly asp-for="nombreDeUsuario" class="form-control" />
                 <span asp-validation-for="nombreDeUsuario" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="FechaAlta" class="control-label"></label>
-                <input asp-for="FechaAlta" class="form-control" />
+                <input readonly asp-for="FechaAlta" class="form-control" />
                 <span asp-validation-for="FechaAlta" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,12 +40,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="apellido" class="control-label"></label>
-                <input asp-for="apellido" class="form-control" />
+                <input readonly asp-for="apellido" class="form-control" />
                 <span asp-validation-for="apellido" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="dni" class="control-label"></label>
-                <input asp-for="dni" class="form-control" />
+                <input readonly asp-for="dni" class="form-control" />
                 <span asp-validation-for="dni" class="text-danger"></span>
             </div>
             <div class="form-group">

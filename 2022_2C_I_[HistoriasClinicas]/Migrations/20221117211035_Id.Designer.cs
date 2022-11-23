@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _2022_2C_I__HistoriasClinicas_.Data;
 
@@ -11,9 +12,10 @@ using _2022_2C_I__HistoriasClinicas_.Data;
 namespace _2022_2C_I__HistoriasClinicas_.Migrations
 {
     [DbContext(typeof(HistoriasClinicasContext))]
-    partial class HistoriasClinicasContextModelSnapshot : ModelSnapshot
+    [Migration("20221117211035_Id")]
+    partial class Id
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
