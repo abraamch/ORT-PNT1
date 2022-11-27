@@ -41,9 +41,9 @@
                                         @{
                                         try{
                              @Html.Raw(UsuarioLog.UsuarioLogueado.email + " " + UsuarioLog.UsuarioLogueado.GetType());
-                                            
 
-                                        }
+                             <a class="nav-link text-dark" asp-area="" asp-controller="Cuenta" asp-action="CerrarSesion">Cerrar Sesion</a>
+                                            }
                                         catch (Exception e) { }
                                         }
                             </p>

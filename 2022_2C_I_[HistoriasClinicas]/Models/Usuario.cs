@@ -29,4 +29,5 @@ public class Usuario
 public static class UsuarioLog {
     public static Usuario? UsuarioLogueado { get; set; }
     public static int? UsuarioLogueadoId { get; set; }
+    public static int? HCId { get; set; }
 }

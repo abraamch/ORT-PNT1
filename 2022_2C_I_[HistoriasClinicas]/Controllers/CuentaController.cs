@@ -18,6 +18,13 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
             _context = context;
         }
 
+        public IActionResult CerrarSesion()
+        {
+            UsuarioLog.UsuarioLogueado = null;
+            UsuarioLog.UsuarioLogueadoId = null;
+            UsuarioLog.HCId = null;
+            return Redirect("/Cuenta/Index");
+        }
         public IActionResult Index()
         {
             return View();
@@ -44,6 +51,7 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
                 {
                     UsuarioLog.UsuarioLogueado =  pac;
                     UsuarioLog.UsuarioLogueadoId = pac.PacienteId;
+                    UsuarioLog.HCId = pac.HCId;
                     return Redirect("/Medicos"); }
             }
             else {
@@ -133,7 +141,7 @@ namespace _2022_2C_I__HistoriasClinicas_.Controllers
 
         public IActionResult MiHistoriaClinica() {
 
-            return View(_context.Episodios.Where(a => a.HistoriaClinicaId == UsuarioLog.UsuarioLogueadoId).ToList());
+            return View(_context.Episodios.Where(a => a.HistoriaClinicaId == UsuarioLog.HCId).ToList());
         }
     }
 }
